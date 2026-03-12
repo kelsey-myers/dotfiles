@@ -2,6 +2,15 @@
 
 echo "🚀 Setting up dotfiles..."
 
+# Ensure .bashrc is sourced for login shells (fixes VS Code terminal)
+echo "🔧 Setting up .bash_profile..."
+cat > ~/.bash_profile << 'PROFILE'
+# Source .bashrc for login shells
+if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+fi
+PROFILE
+
 # Git config
 echo "⚙️  Configuring git..."
 git config --global push.autoSetupRemote true
